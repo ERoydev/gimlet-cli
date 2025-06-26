@@ -1,17 +1,22 @@
-use clap::Parser;
 use std::{fs, process::Command};
 use tempfile::tempdir;
 
 /// Gimlet Debugger CLI – launches LLDB with Rust formatters
-#[derive(Parser)]
-#[command(version, about)]
-struct Args {
-    /// Path to the binary to debug
-    binary: String,
-}
+
+// This could be good approach but it needs a refactoring on gimlet
+
+// #[derive(Parser)]
+// #[command(version, about)]
+// struct Args {
+//     /// Path to the binary to debug
+//     binary: String,
+// }
+
+// We need to avoid refactoring big on gimlet before all stuff work
+
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let args = Args::parse();
+    // let args = Args::parse();
 
     // Create a temp dirs to hold script + formatters (exists only while program runs)
     let temp_dir = tempdir()?;
@@ -41,7 +46,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Run the script
     let status = Command::new(&run_script_path)
-        .arg(&args.binary)
         .current_dir(&temp_path) 
         .status()?;
 
