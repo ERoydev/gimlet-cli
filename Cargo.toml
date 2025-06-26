@@ -3,10 +3,19 @@ name = "gimlet-cli"
 version = "0.1.0"
 edition = "2021"
 
+description = "A CLI tool used to debug executable binaries of Solana program using LLDB + rust formatting scripts."
+license-file = "LICENSE"
+
+authors = ["Emil Roydev"]
+readme = "README.md"
+repository = "https://github.com/ERoydev/anchor-lldb"
+keywords = ["solana", "anchor", "lldb", "debugging", "cli"]
+categories = ["development-tools", "command-line-utilities"]
+
 [dependencies]
 clap = { version = "4.5.40", features = ["derive"] }
 tempfile = "3.20.0"
-which = "8.0.0"
+
 
 [[bin]]
 name = "gimlet-cli"
